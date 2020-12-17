@@ -14,6 +14,14 @@ module.exports = (sequelize, DataTypes) => {
       Playlist.belongsTo(models.User)
       Playlist.belongsTo(models.Song)
     }
+
+    static myList(userId, include) {
+      return this.findAll({
+        where: { UserId: userId }, 
+        order: [['createdAt', 'DESC']],
+        include: include
+      })
+    }
   };
   Playlist.init({
     UserId: DataTypes.INTEGER,

@@ -1,6 +1,6 @@
-<%- include('./partial/header') %>
+<%- include('../partial/header') %>
 <body>
-  <%- include('./partial/navbar') %>
+  <%- include('../partial/navbar') %>
   <br><br>
   <form action="/songs/edit/<%=data.id%>" method="POST">
     <form>
@@ -11,7 +11,6 @@
       <div>
         <label for="genre">Genre</label>
         <select name="genre" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-
             <option value="pop" <%= data.genre === 'pop' ? 'selected' : '' %>>Pop</option>
             <option value="rock" <%= data.genre === 'rock' ? 'selected' : '' %>>Rock</option>
             <option value="pop-rock" <%= data.genre === 'pop-rock' ? 'selected' : '' %>>Pop Rock</option>
@@ -28,10 +27,13 @@
         <label for="released year">Artist</label>
         <input type="artist" class="form-control" name="artist" value="<%=data.artist%>">
       </div>
-      
-    
+      <div class="form-group">
+        <label>Youtube ID</label>
+        <input type="artist" class="form-control" name="youtubeId" value="<%=data.youtubeId%>">
+      </div>
       <br>
-      <button type="submit" class="btn btn-primary">Submit</button>  <button type="reset" class="btn btn-secondary">Cancel</button>
+      <button type="submit" class="btn btn-primary">Submit</button>  
+      <a href="/songs" class="btn btn-secondary">Cancel</a>
     </form>
   </form>
 </body>

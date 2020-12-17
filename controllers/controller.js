@@ -24,7 +24,7 @@ class Controller {
 
         User.create(obj)
             .then(result => {
-                res.redirect('/login')
+                res.redirect('/register')
             })
             .catch(err => {
                 res.send(err)
@@ -38,18 +38,15 @@ class Controller {
     static loginPost(req, res) {
         User.findOne({where: { username: req.body.username, password: req.body.password }})
          .then(data => {
-             req.session.userId = data.id
+             req.session.username = data.username
+             req.session.user = data.id
              res.redirect('/')
          })
-         .catch(error => {
-            res.redirect(`/login?message=Username or Password invalid `)
+         .catch(err => {
+             res.send(err)
          })
      }
 
-     static logout(req, res) {
-        req.session.userId = null
-        res.redirect('/login')
-     }
 
      //CRUD SONG
 

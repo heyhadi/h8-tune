@@ -13,12 +13,17 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Song.belongsToMany(models.User, {through:models.Playlist})
     }
+
+    get fullTitle() {
+      return `${this.artist} - ${this.title}`
+    }
   };
   Song.init({
     title: DataTypes.STRING,
     artist: DataTypes.STRING,
     genre: DataTypes.STRING,
-    released_date: DataTypes.STRING
+    released_date: DataTypes.STRING,
+    youtubeId: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Song',

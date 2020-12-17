@@ -1,6 +1,6 @@
-<%- include('./partial/header') %>
+<%- include('../partial/header') %>
 <body>
-  <%- include('./partial/navbar') %>
+  <%- include('../partial/navbar') %>
   <br>
   <h1 align="left">List Songs</h1>
   <% if(alert.message){ %>
@@ -35,7 +35,7 @@
           <td style="text-align: right;">
             <a href="/songs/edit/<%=data[i].id%>"><button type="button" class="btn btn-primary">Edit</button></a>  
             <a href="/songs/<%=data[i].id%>/delete" onclick="return confirm('Delete this?')"><button type="button" class="btn btn-primary">Delete</button></a>  
-            <a href="/playlist/add/<%=data[i].id%>"><button type="button" class="btn btn-primary">Add to Playlist</button></a>  
+            <a href="/my_playlist/songs/<%=data[i].id%>/add" class="btn btn-primary">Add to Playlist</a>  
           </td>
       <% } %>
     </tbody>
