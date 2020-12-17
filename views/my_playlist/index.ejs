@@ -1,0 +1,32 @@
+<%- include('../partial/header') %>
+<body>
+  <%- include('../partial/navbar') %>
+  <br>
+  <h1 align="left">My Songs</h1>
+  <div class="container-fluid text-right mb-1">
+    <a href="/songs" class="btn btn-success">Add Song to Playlist</a>
+  </div>
+  <br />
+  <% if(songId) { %>
+    <% const song = data.find((d) => d.SongId == songId).Song %>
+    <div class="card" style="width: 500px;">
+      <div class="card-body">
+        <h5 class="card-title"><%= song.fullTitle %></h5>
+        <iframe width="100%" height="300" src="https://www.youtube.com/embed/<%= song.youtubeId %>" frameborder="0"></iframe>
+      </div>
+    </div>
+  <% } %>
+  <br />
+  <table class="table">
+    <tbody>
+      <% data.forEach((d) => { %>
+        <tr>
+          <th><%= d.Song.fullTitle %></th>
+          <th><a href="/my_playlist/songs/<%= d.SongId %>/play">Play</a></th>
+          <th><a href="/my_playlist/songs/<%= d.SongId %>/remove">Remove</a></th>
+        </tr>
+      <% }) %>
+      </tbody>
+  </table>
+</body>
+</html> 

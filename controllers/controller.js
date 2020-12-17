@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 const { User, Song, Playlist, FavouritSong } = require('../models')
 const tuannyonya = require('../helper/tuannyonya')
+=======
+const { User, Song, Playlist } = require('../models')
+>>>>>>> hadi
 
 
 
@@ -10,8 +14,12 @@ class Controller {
             res.render('home')
     }
     static register(req, res) {
+<<<<<<< HEAD
       let alert = req.query
       res.render('register', {alert})
+=======
+        res.render('register')
+>>>>>>> hadi
     }
 
 
@@ -22,20 +30,31 @@ class Controller {
             username: req.body.username,
             password: req.body.password,
             gender: req.body.gender,
+<<<<<<< HEAD
             role: req.body.role,
+=======
+>>>>>>> hadi
         }
 
         User.create(obj)
             .then(result => {
+<<<<<<< HEAD
                 res.redirect('/register?message=register success')
+=======
+                res.redirect('/register')
+>>>>>>> hadi
             })
             .catch(err => {
                 res.send(err)
             })
     }
     static login(req, res) {
+<<<<<<< HEAD
       let alert = req.query
       res.render('login', {alert})
+=======
+        res.render('login')
+>>>>>>> hadi
 
     }
 
@@ -46,8 +65,13 @@ class Controller {
              req.session.user = data.id
              res.redirect('/')
          })
+<<<<<<< HEAD
          .catch(error => {
             res.redirect(`/login?message=Username or Password invalid `)
+=======
+         .catch(err => {
+             res.send(err)
+>>>>>>> hadi
          })
      }
 
@@ -55,7 +79,11 @@ class Controller {
      //CRUD SONG
 
     static songList(req, res){
+<<<<<<< HEAD
        let alert = req.query
+=======
+        let alert = req.query
+>>>>>>> hadi
        Song.findAll({order : [['released_date', 'DESC']]})
         .then(data=>{
           res.render('songs', {data, alert})  
@@ -107,7 +135,27 @@ class Controller {
           })
      }
  
+<<<<<<< HEAD
   
+=======
+     static updateEdit(req, res) {
+         
+         let obj = {
+             title: req.body.title,
+             uploader_name: req.body.uploader_name,
+         }
+         
+         let id = +req.params.id
+ 
+         Tutorial.update(obj, {where: {id}})
+           .then(data => {
+             res.redirect('/')
+           })
+           .catch(err => {
+             res.send(err)
+           })
+     }
+>>>>>>> hadi
 
      static editSong(req,res){
         // res.send(req.body)
@@ -124,6 +172,7 @@ class Controller {
           res.render('error', {error})
         })
       }
+<<<<<<< HEAD
 
       //favourite song
 
@@ -170,6 +219,8 @@ class Controller {
           res.send(err.message)
       })
   }
+=======
+>>>>>>> hadi
  
 
 }

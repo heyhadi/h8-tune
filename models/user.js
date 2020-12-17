@@ -14,8 +14,9 @@ module.exports = (sequelize, DataTypes) => {
       User.belongsToMany(models.Song, {through:models.Playlist})
       User.belongsToMany(models.Song, {through:models.FavouritSong})
     }
-    getFullName() {
-      return `${this.first_name} ${this.last_name}`
+
+    get fullName() {
+      return this.first_name + " " + this.last_name
     }
   };
   User.init({
@@ -25,13 +26,12 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     password: DataTypes.STRING
   }, {
-    hooks : {
-      beforeCreate(instance, options) {
-        if(!instance.last_name || instance.last_name.trim('') === '') {
-          instance.last_name = instance.first_name
-        }
+    hooks: {
+      beforeSave: (instance) => {
+        instance.first_name = instance.first_name.trim()
+        instance.last_name = instance.last_name.trim()
       }
-    },
+    },  
     sequelize,
     modelName: 'User',
   });
