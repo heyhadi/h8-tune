@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('./partial/header') %>
+    <%- include('../partial/header') %>
 <body>
-      <%- include('./partial/navbar') %>
+      <%- include('../partial/navbar') %>
     
     <br>
     
 
     <h1><%= value.title %></h1>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/KNJYBOj7Cfc?start=2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <br>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/<%= value.youtubeId %>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> <br>
     
-    <a href="/like/<%= value.id %>">
+    <a href="/songs/<%= value.id %>/like">
         <button type="button">Favorite!</button>
     </a>
     
@@ -26,7 +26,7 @@
         <tbody class="table table-sm table-light"> 
             <% value.Users.forEach(element => { %>
                 <tr>
-                    <td><%= tuannyonya(element.gender, element.getFullName()) %></td>
+                    <td><%= tuannyonya(element.gender, element.fullName) %></td>
                 </tr>
             <% }) %>
         </tbody>

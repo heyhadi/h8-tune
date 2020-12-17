@@ -2,7 +2,8 @@ const { User } = require('../models')
 
 class AuthController {
   static register(req, res) {
-    res.render('register')
+    let alert = req.query
+    res.render('register', {alert})
   }
 
   static saveRegister(req, res) {
@@ -23,7 +24,8 @@ class AuthController {
         })
   }
   static login(req, res) {
-    res.render('login')
+    let alert = req.query
+    res.render('login', {alert})
 
   }
 

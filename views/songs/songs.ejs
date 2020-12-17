@@ -36,6 +36,7 @@
             <a href="/songs/edit/<%=data[i].id%>"><button type="button" class="btn btn-primary">Edit</button></a>  
             <a href="/songs/<%=data[i].id%>/delete" onclick="return confirm('Delete this?')"><button type="button" class="btn btn-primary">Delete</button></a>  
             <a href="/my_playlist/songs/<%=data[i].id%>/add" class="btn btn-primary">Add to Playlist</a>  
+            <a href="/songs/favourite/<%=data[i].id%>"><button type="button" class="btn btn-primary">Favourited by</button></a>  
           </td>
       <% } %>
     </tbody>

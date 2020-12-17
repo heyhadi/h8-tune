@@ -21,6 +21,4 @@ router.use(authenticate)
 router.use('/', homeRouter)
 router.use('/songs', songRouter)
 router.use('/my_playlist', myPlaylistRouter)
-router.get('/songs/favourite/:id', Controller.showFavorite)
-router.get('/like/:id', Controller.like)
 module.exports = router

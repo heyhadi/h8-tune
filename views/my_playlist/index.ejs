@@ -23,7 +23,7 @@
         <tr>
           <th><%= d.Song.fullTitle %></th>
           <th><a href="/my_playlist/songs/<%= d.SongId %>/play">Play</a></th>
-          <th><a href="/my_playlist/songs/<%= d.SongId %>/remove">Remove</a></th>
+          <th><a href="/my_playlist/songs/<%= d.SongId %>/remove" onclick="return confirm('Delete this?')">Remove</a></th>
         </tr>
       <% }) %>
       </tbody>

@@ -1,4 +1,5 @@
-const { Song } = require('../models')
+const tuannyonya = require('../helper/tuannyonya')
+const { User, Song, FavouritSong } = require('../models')
 
 class SongController {
   static songList(req, res){
@@ -71,6 +72,47 @@ class SongController {
     })
   }
 
+  static showFavorite(req, res) {
+    let id = +req.params.id
+   
+    Song.findByPk(id, {include: [User]})
+    .then( value => {
+        console.log(value);
+        res.render('songs/favorite', { value, tuannyonya })
+    })
+    .catch(err => {
+        res.send(err)
+    })
+  }
+
+  static like(req, res) {
+    let paramId = +req.params.id
+    
+    let obj = {
+      SongId: paramId,
+      UserId: req.session.user
+    }
+
+
+    FavouritSong.findOne({
+      where: {
+        SongId: paramId, UserId: req.session.userId
+      }
+    })
+    .then(results => {
+      if (results) {
+        res.redirect(`/songs/favourite/${paramId}`)
+      } else {
+        FavouritSong.create(obj)
+        .then(data => {
+            res.redirect(`/songs/favourite/${paramId}`)
+        })
+      }
+    })
+    .catch(err => {
+        res.send(err.message)
+    })
+  }  
 }
 
 module.exports = SongController
