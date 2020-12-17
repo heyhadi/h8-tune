@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const Controller = require('../controllers/controller');
 const { User } = require('../models');
 const homeRouter = require('./homeRouter');
 const authRouter = require('./authRouter');
