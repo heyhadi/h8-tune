@@ -1,0 +1,30 @@
+{
+  "name": "h8-tune",
+  "version": "1.0.0",
+  "description": "Simple Express app with many to many sequelize association",
+  "main": "index.js",
+  "dependencies": {
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "nodemon": "^2.0.6",
+    "pg": "^8.5.1",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heyhadi/h8-tune.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heyhadi/h8-tune/issues"
+  },
+  "homepage": "https://github.com/heyhadi/h8-tune#readme"
+}
