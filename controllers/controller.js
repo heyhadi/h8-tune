@@ -2,6 +2,10 @@ const { User, Song, Playlist } = require('../models')
 
 
 class Controller {
+
+    static home(req, res) {
+            res.render('home')
+    }
     static register(req, res) {
         res.render('register')
     }
@@ -28,6 +32,19 @@ class Controller {
         res.render('login')
 
     }
+
+    static loginPost(req, res) {
+        User.findOne({where: { username: req.body.username, password: req.body.password }})
+         .then(data => {
+             req.session.username = data.username
+             req.session.user = data.id
+             res.redirect('/')
+         })
+         .catch(err => {
+             res.send(err)
+         })
+     }
+ 
 
 }
 
