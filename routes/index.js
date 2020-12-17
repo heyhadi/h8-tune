@@ -1,10 +1,12 @@
 const express = require('express');
 const router = express.Router();
-const Controller = require('../controllers/controller')
+const Controller = require('../controllers/controller');
+const { User } = require('../models');
 
-function authenticate(req, res, next) {
+async function authenticate(req, res, next) {
   
-    if (req.session.username) {
+    if (req.session.userId) {
+        res.locals.currentUser = await User.findByPk(req.session.userId)
         next()
     } else {
         res.redirect('/login')

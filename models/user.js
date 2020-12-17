@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.belongsToMany(models.Song, {through:models.Playlist})
     }
+
+    get fullName() {
+      return this.first_name + " " + this.last_name
+    }
   };
   User.init({
     first_name: DataTypes.STRING,

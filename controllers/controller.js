@@ -38,8 +38,7 @@ class Controller {
     static loginPost(req, res) {
         User.findOne({where: { username: req.body.username, password: req.body.password }})
          .then(data => {
-             req.session.username = data.username
-             req.session.user = data.id
+             req.session.userId = data.id
              res.redirect('/')
          })
          .catch(error => {
@@ -48,8 +47,7 @@ class Controller {
      }
 
      static logout(req, res) {
-        req.session.username = data.username
-        req.session.user = data.id
+        req.session.userId = null
         res.redirect('/login')
      }
 
