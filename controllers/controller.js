@@ -120,6 +120,22 @@ class Controller {
              res.send(err)
            })
      }
+
+     static editSong(req,res){
+        // res.send(req.body)
+        Song.update({
+          title: req.body.title,
+          genre: req.body.genre,
+          released_date: req.body.released_date,
+          artist: req.body.artist
+        }, { where: { id: Number(req.params.id) }})
+        .then(()=>{        
+          res.redirect(`/songs?message=Song with id: ${req.params.id} has been succeessfully edited!&type=success`)
+        })
+        .catch(error=>{
+          res.render('error', {error})
+        })
+      }
  
 
 }

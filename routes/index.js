@@ -25,7 +25,7 @@ router.get('/songs/add', Controller.addGet)
 router.post('/songs/add', Controller.addSong)
 router.get('/songs/:id/delete', Controller.destroy)
 router.get('/songs/edit/:id', Controller.editForm)
-// router.post('/song/edit/:id', Controller.editSong)
+router.post('/songs/edit/:id', Controller.editSong)
 // router.get('/song/delete/:id', Controller.destroy)
 
 // router.get('/users', Controller.userList)
