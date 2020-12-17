@@ -24,7 +24,7 @@ class Controller {
 
         User.create(obj)
             .then(result => {
-                res.redirect('/register')
+                res.redirect('/login')
             })
             .catch(err => {
                 res.send(err)
@@ -47,6 +47,11 @@ class Controller {
          })
      }
 
+     static logout(req, res) {
+        req.session.username = data.username
+        req.session.user = data.id
+        res.redirect('/login')
+     }
 
      //CRUD SONG
 

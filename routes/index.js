@@ -17,7 +17,7 @@ router.get('/register', Controller.register)
 router.post('/register', Controller.saveRegister)
 router.use(authenticate)
 router.get('/', Controller.home)
-
+router.get('/logout', Controller.logout)
 
 // //Song
 router.get('/songs', Controller.songList)
