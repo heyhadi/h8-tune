@@ -25,6 +25,12 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     password: DataTypes.STRING
   }, {
+    hooks: {
+      beforeSave: (instance) => {
+        instance.first_name = instance.first_name.trim()
+        instance.last_name = instance.first_name.trim()
+      }
+    },  
     sequelize,
     modelName: 'User',
   });
