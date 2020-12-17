@@ -20,9 +20,11 @@ router.get('/', Controller.home)
 
 
 // //Song
-// router.get('/song/add', Controller.formSong)
-// router.post('/song/add', Controller.addSong)
-// router.get('/song/edit/:id', Controller.editForm)
+router.get('/songs', Controller.songList)
+router.get('/songs/add', Controller.addGet)
+router.post('/songs/add', Controller.addSong)
+router.get('/songs/:id/delete', Controller.destroy)
+router.get('/songs/edit/:id', Controller.editForm)
 // router.post('/song/edit/:id', Controller.editSong)
 // router.get('/song/delete/:id', Controller.destroy)
 

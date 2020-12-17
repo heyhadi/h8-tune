@@ -1,0 +1,38 @@
+<%- include('./partial/header') %>
+<body>
+  <%- include('./partial/navbar') %>
+  <br><br>
+  <form action="/songs/edit/<%=data.id%>" method="POST">
+    <form>
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="title" class="form-control" name="title" value="<%=data.title%>">
+      </div>
+      <div>
+        <label for="genre">Genre</label>
+        <select name="genre" class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+
+            <option value="pop" <%= data.genre === 'pop' ? 'selected' : '' %>>Pop</option>
+            <option value="rock" <%= data.genre === 'rock' ? 'selected' : '' %>>Rock</option>
+            <option value="pop-rock" <%= data.genre === 'pop-rock' ? 'selected' : '' %>>Pop Rock</option>
+            <option value="dangdut" <%= data.genre === 'dangdut ? 'selected' : '' %>>Dangdut</option>
+            <option value="religious" <%= data.genre === 'religious' ? 'selected' : '' %>>Religious</option>
+            <option value="metal"<%= data.genre === 'metal' ? 'selected' : '' %>>Metal</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="released year">Released Date</label>
+        <input type="released year" class="form-control" name="released_date" value="<%=data.released_date%>">
+      </div>
+      <div class="form-group">
+        <label for="released year">Artist</label>
+        <input type="artist" class="form-control" name="artist" value="<%=data.artist%>">
+      </div>
+      
+    
+      <br>
+      <button type="submit" class="btn btn-primary">Submit</button>  <button type="reset" class="btn btn-secondary">Cancel</button>
+    </form>
+  </form>
+</body>
+</html> 
