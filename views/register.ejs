@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Login </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=20%, initial-scale=1">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href=".css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <form action="/register" method="post" name="register_Form" class="form-register">
+                <h3 class="form-signin-heading">Welcome! You need to register to continue. </h3>
+                <input type="first_name" class="form-control" name="first_name" placeholder="first name" required=""/>
+                <input type="last_name" class="form-control" name="last_name" placeholder="last name" required=""/>
+                <input type="gender" class="form-control" name="gender" placeholder="male or female" required=""/>
+                <input type="username" class="form-control" name="username" placeholder="username" required=""/>
+                <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
+                <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+
+                
+               
+                <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Register" type="Submit">Register</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
