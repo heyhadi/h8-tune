@@ -43,7 +43,7 @@ class Controller {
              res.redirect('/')
          })
          .catch(error => {
-            res.redirect(`/login?message=Username or Password invalid`)
+            res.redirect(`/login?message=Username or Password invalid `)
          })
      }
 
