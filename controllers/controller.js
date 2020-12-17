@@ -42,8 +42,8 @@ class Controller {
              req.session.user = data.id
              res.redirect('/')
          })
-         .catch(err => {
-             res.send(err)
+         .catch(error => {
+            res.redirect(`/login?message=Username or Password invalid`)
          })
      }
 
