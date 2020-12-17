@@ -12,6 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.belongsToMany(models.Song, {through:models.Playlist})
+      User.belongsToMany(models.Song, {through:models.FavouritSong})
+    }
+    getFullName() {
+      return `${this.first_name} ${this.last_name}`
     }
   };
   User.init({
@@ -21,6 +25,13 @@ module.exports = (sequelize, DataTypes) => {
     username: DataTypes.STRING,
     password: DataTypes.STRING
   }, {
+    hooks : {
+      beforeCreate(instance, options) {
+        if(!instance.last_name || instance.last_name.trim('') === '') {
+          instance.last_name = instance.first_name
+        }
+      }
+    },
     sequelize,
     modelName: 'User',
   });

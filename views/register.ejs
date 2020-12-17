@@ -18,16 +18,25 @@
         <div class="wrapper">
             <form action="/register" method="post" name="register_Form" class="form-register">
                 <h3 class="form-signin-heading">Welcome! You need to register to continue. </h3>
+                <% if(alert.message){ %>
+                    <div class="alert alert-success" role="alert">
+                        <%= alert.message %>
+                    </div>
+                    <%}%>
                 <input type="first_name" class="form-control" name="first_name" placeholder="first name" required=""/>
                 <input type="last_name" class="form-control" name="last_name" placeholder="last name" required=""/>
                 <input type="gender" class="form-control" name="gender" placeholder="male or female" required=""/>
                 <input type="username" class="form-control" name="username" placeholder="username" required=""/>
                 <input type="text" class="form-control" name="email" placeholder="Email Address" required="" autofocus="" />
                 <input type="password" class="form-control" name="password" placeholder="Password" required=""/>
+                <input type="text" class="form-control" name="role" placeholder="role: admin or user" required=""/>
+
 
                 
                
                 <button class="btn btn-lg btn-primary btn-block" name="Submit" value="Register" type="Submit">Register</button>
+                <p text-align="cente">have an account ? Please Login <a href="/login">here</a>
+                
             </form>
         </div>
     </div>

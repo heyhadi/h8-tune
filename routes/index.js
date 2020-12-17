@@ -26,7 +26,8 @@ router.post('/songs/add', Controller.addSong)
 router.get('/songs/:id/delete', Controller.destroy)
 router.get('/songs/edit/:id', Controller.editForm)
 router.post('/songs/edit/:id', Controller.editSong)
-// router.get('/song/delete/:id', Controller.destroy)
+router.get('/songs/favourite/:id', Controller.showFavorite)
+router.get('/like/:id', Controller.like)
 
 // router.get('/users', Controller.userList)
 // router.get('/users/add', Controller.addNewUser)
@@ -36,7 +37,7 @@ router.post('/songs/edit/:id', Controller.editSong)
 
 // router.get('/tutorials/favorite/:id', Controller.showFavorite)
 
-// router.get('/like/:id', Controller.like)
+
 
 
 

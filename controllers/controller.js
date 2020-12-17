@@ -1,4 +1,5 @@
-const { User, Song, Playlist } = require('../models')
+const { User, Song, Playlist, FavouritSong } = require('../models')
+const tuannyonya = require('../helper/tuannyonya')
 
 
 
@@ -9,7 +10,8 @@ class Controller {
             res.render('home')
     }
     static register(req, res) {
-        res.render('register')
+      let alert = req.query
+      res.render('register', {alert})
     }
 
 
@@ -20,18 +22,20 @@ class Controller {
             username: req.body.username,
             password: req.body.password,
             gender: req.body.gender,
+            role: req.body.role,
         }
 
         User.create(obj)
             .then(result => {
-                res.redirect('/register')
+                res.redirect('/register?message=register success')
             })
             .catch(err => {
                 res.send(err)
             })
     }
     static login(req, res) {
-        res.render('login')
+      let alert = req.query
+      res.render('login', {alert})
 
     }
 
@@ -51,7 +55,7 @@ class Controller {
      //CRUD SONG
 
     static songList(req, res){
-        let alert = req.query
+       let alert = req.query
        Song.findAll({order : [['released_date', 'DESC']]})
         .then(data=>{
           res.render('songs', {data, alert})  
@@ -103,23 +107,7 @@ class Controller {
           })
      }
  
-     static updateEdit(req, res) {
-         
-         let obj = {
-             title: req.body.title,
-             uploader_name: req.body.uploader_name,
-         }
-         
-         let id = +req.params.id
- 
-         Tutorial.update(obj, {where: {id}})
-           .then(data => {
-             res.redirect('/')
-           })
-           .catch(err => {
-             res.send(err)
-           })
-     }
+  
 
      static editSong(req,res){
         // res.send(req.body)
@@ -136,6 +124,52 @@ class Controller {
           res.render('error', {error})
         })
       }
+
+      //favourite song
+
+      static showFavorite(req, res) {
+        let id = +req.params.id
+       
+        Song.findByPk(id, {include: [User]})
+        .then( value => {
+            console.log(value);
+            res.render('favorite', { value, tuannyonya})
+        })
+        .catch(err => {
+            res.send(err)
+        })
+    }
+
+    static like(req, res) {
+      let paramId = +req.params.id
+      // console.log(req.session.user);
+      // console.log(paramId);
+      
+      let obj = {
+          SongId: paramId,
+          UserId: req.session.user
+      }
+
+
+      FavouritSong.findOne({
+          where: {
+              SongId: paramId, UserId: req.session.user
+          }
+      })
+      .then(results => {
+          if (results) {
+              res.redirect(`/songs/favourite/${paramId}`)
+          } else {
+              FavouritSong.create(obj)
+              .then(data => {
+                  res.redirect(`/songs/favourite/${paramId}`)
+              })
+          }
+      })
+      .catch(err => {
+          res.send(err.message)
+      })
+  }
  
 
 }
